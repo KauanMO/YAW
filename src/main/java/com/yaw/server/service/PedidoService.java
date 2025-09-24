@@ -16,6 +16,7 @@ public class PedidoService {
                 .preco(dto.preco())
                 .titulo(dto.titulo())
                 .link(dto.link())
+                .foto(dto.foto())
                 .build();
 
         return repository.save(novoPedido);

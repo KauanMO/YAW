@@ -3,6 +3,7 @@ package com.yaw.server.service;
 import com.yaw.server.dto.pedido.RegistrarPedidoDTO;
 import com.yaw.server.model.Pedido;
 import com.yaw.server.repository.PedidoRepository;
+import com.yaw.server.service.exceptions.EntidadeNaoEncontradaException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,5 +21,9 @@ public class PedidoService {
                 .build();
 
         return repository.save(novoPedido);
+    }
+
+    public Pedido buscarPedidoPorId(Long id) {
+        return repository.findById(id).orElseThrow(() -> new EntidadeNaoEncontradaException(Pedido.class));
     }
 }

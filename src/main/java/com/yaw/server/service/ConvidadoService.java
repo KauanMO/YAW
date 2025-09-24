@@ -3,6 +3,7 @@ package com.yaw.server.service;
 import com.yaw.server.dto.convidado.RegistrarConvidadoDTO;
 import com.yaw.server.model.Convidado;
 import com.yaw.server.repository.ConvidadoRepository;
+import com.yaw.server.service.exceptions.EntidadeNaoEncontradaException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,5 +19,9 @@ public class ConvidadoService {
                 .build();
 
         return repository.save(novoConvidado);
+    }
+
+    public Convidado buscarConvidadoPorId(Long id) {
+        return repository.findById(id).orElseThrow(() -> new EntidadeNaoEncontradaException(Convidado.class));
     }
 }

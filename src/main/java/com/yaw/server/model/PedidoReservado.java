@@ -9,17 +9,17 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 @Entity
-@Table(name = "yaw_convidado")
+@Table(name = "yaw_pedido_reservado")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Convidado {
+public class PedidoReservado {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nome;
-    private String numero;
+    @OneToOne
+    private Pedido pedido;
 
-    @OneToOne(mappedBy = "convidado")
-    private PedidoReservado pedidoReservado;
+    @OneToOne
+    private Convidado convidado;
 }

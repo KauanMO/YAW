@@ -17,8 +17,13 @@ public class Pedido {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Lob
+    @Column(columnDefinition = "TEXT")
     private String link;
     private String foto;
     private String titulo;
     private Double preco;
+
+    @OneToOne(mappedBy = "pedido")
+    private PedidoReservado pedidoReservado;
 }

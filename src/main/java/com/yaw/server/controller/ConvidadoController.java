@@ -6,10 +6,9 @@ import com.yaw.server.model.Convidado;
 import com.yaw.server.service.ConvidadoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -22,5 +21,16 @@ public class ConvidadoController {
         Convidado novoConvidado = service.registrarConvidado(dto);
 
         return ResponseEntity.ok(new RetornoConvidadoDTO(novoConvidado));
+    }
+
+    @GetMapping
+    ResponseEntity<List<RetornoConvidadoDTO>> buscarConvidados() {
+        List<Convidado> convidados = service.buscarConvidados();
+
+        return ResponseEntity.ok(
+                convidados.stream()
+                        .map(RetornoConvidadoDTO::new)
+                        .toList()
+        );
     }
 }

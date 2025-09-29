@@ -7,6 +7,8 @@ import com.yaw.server.service.exceptions.EntidadeNaoEncontradaException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class ConvidadoService {
@@ -23,5 +25,9 @@ public class ConvidadoService {
 
     public Convidado buscarConvidadoPorId(Long id) {
         return repository.findById(id).orElseThrow(() -> new EntidadeNaoEncontradaException(Convidado.class));
+    }
+
+    public List<Convidado> buscarConvidados() {
+        return repository.findAll();
     }
 }

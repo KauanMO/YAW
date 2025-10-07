@@ -4,6 +4,7 @@ public record RegistrarPedidoDTO(
         String link,
         String titulo,
         Double preco,
-        String foto
+        String foto,
+        String descricao
 ) {
 }

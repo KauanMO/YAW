@@ -7,9 +7,10 @@ public record RetornoPedidoDTO(
         String link,
         String foto,
         String titulo,
-        Double preco
+        Double preco,
+        String descricao
 ) {
     public RetornoPedidoDTO(Pedido pedido) {
-        this(pedido.getId(), pedido.getLink(), pedido.getFoto(), pedido.getTitulo(), pedido.getPreco());
+        this(pedido.getId(), pedido.getLink(), pedido.getFoto(), pedido.getTitulo(), pedido.getPreco(), pedido.getDescricao());
     }
 }

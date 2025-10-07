@@ -20,6 +20,7 @@ public class PedidoService {
                 .titulo(dto.titulo())
                 .link(dto.link())
                 .foto(dto.foto())
+                .descricao(dto.descricao())
                 .build();
 
         return repository.save(novoPedido);

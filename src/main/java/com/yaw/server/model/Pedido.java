@@ -23,6 +23,7 @@ public class Pedido {
     private String foto;
     private String titulo;
     private Double preco;
+    private String descricao;
 
     @OneToOne(mappedBy = "pedido")
     private PedidoReservado pedidoReservado;
